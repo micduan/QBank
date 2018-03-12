@@ -1,1 +1,0 @@
-../../Cellar/opus/1.2.1/lib/pkgconfig/opus.pc

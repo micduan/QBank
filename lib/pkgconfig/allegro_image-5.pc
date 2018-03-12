@@ -1,1 +1,0 @@
-../../Cellar/allegro/5.2.3.0/lib/pkgconfig/allegro_image-5.pc
