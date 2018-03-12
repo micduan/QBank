@@ -1,0 +1,4 @@
+class NoFile {
+public:
+	NoFile() {}
+};

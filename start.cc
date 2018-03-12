@@ -4,8 +4,12 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
 #include <iostream>
+#include <fstream>
 
 #include "start.h"
+#include "wrongFile.h"
+#include "noFile.h"
+#include "noRead.h"
 
 Start::Start() {
 	this->myDisplay = NULL;
@@ -76,10 +80,34 @@ const char * Start::getFilePath() {
 		ALLEGRO_EVENT events;
 		al_wait_for_event(this->event_queue, &events);
 		if (events.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
-			ALLEGRO_FILECHOOSER *filechooser;
-			filechooser = al_create_native_file_dialog("C:", "Choose a file.", "*.*;*.jpg;", 0);
-			al_show_native_file_dialog(this->myDisplay, filechooser);
-			path = al_get_native_file_dialog_path(filechooser, 0);
+			try {
+				ALLEGRO_FILECHOOSER *filechooser;
+				filechooser = al_create_native_file_dialog("C:", "Choose a file.", "*.*;*.jpg;", 0);
+				al_show_native_file_dialog(this->myDisplay, filechooser);
+				path = al_get_native_file_dialog_path(filechooser, 0);
+				if (!path) throw NoFile();
+
+				std::string stringPath;
+				stringPath.assign(path);
+				std::string checkProperFile = stringPath.substr(stringPath.length() - 3, 3);
+				if (checkProperFile != "txt") throw WrongFile();
+				std::ifstream my_file(stringPath);
+				if (!my_file.good()) throw NoRead();
+
+			
+			} catch (NoFile) {
+				al_show_native_message_box(this->myDisplay, "Error", "Error", "File was not selected.", 
+                                 NULL, ALLEGRO_MESSAGEBOX_ERROR);
+				continue;
+			} catch (WrongFile) {
+				al_show_native_message_box(this->myDisplay, "Error", "Error", "File selected is not of type .txt", 
+                                 NULL, ALLEGRO_MESSAGEBOX_ERROR);
+				continue;				
+			} catch (NoRead) {
+				al_show_native_message_box(this->myDisplay, "Error", "Error", "File is not readable", 
+                                 NULL, ALLEGRO_MESSAGEBOX_ERROR);
+				continue;					
+			}
 			done = true;
 		}
 	}

@@ -1,0 +1,1 @@
+../../Cellar/physfs/3.0.1/lib/pkgconfig/physfs.pc

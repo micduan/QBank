@@ -1,6 +1,6 @@
 CXX=g++
 CXXFLAGS=-std=c++14 -Wall -MMD 
-OBJECTS=main.o start.o
+OBJECTS=main.o start.o question.o file.o testbank.o
 DEPENDS=${OBJECTS:.o=.d}
 EXEC=main -lallegro -lallegro_main -lallegro_dialog -lallegro_ttf -lallegro_font -lallegro_image
 ${EXEC}: ${OBJECTS}

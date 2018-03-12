@@ -1,0 +1,4 @@
+class WrongFile {
+public:
+	WrongFile() {}
+};

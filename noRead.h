@@ -1,0 +1,4 @@
+class NoRead {
+public:
+	NoRead() {}
+};
