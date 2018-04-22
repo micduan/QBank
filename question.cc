@@ -1,10 +1,15 @@
 #include "question.h"
 #include <string>
 
-Question::Question(std::string optionA, std::string optionB, std::string optionC, std::string optionD, std::string optionE, int difficulty, std::string answer, std::string topic)
-	: optionA{optionA}, optionB{optionB}, optionC{optionC}, optionD{optionD}, optionE{optionE}, difficulty{difficulty}, answer{answer}, topic{topic} {}
+Question::Question(std::string question, std::string optionA, std::string optionB, std::string optionC, std::string optionD, std::string optionE, int difficulty, std::string answer, std::string topic)
+	: question{question}, optionA{optionA}, optionB{optionB}, optionC{optionC}, optionD{optionD}, optionE{optionE}, difficulty{difficulty}, answer{answer}, topic{topic} {}
 
 Question::Question() {}
+
+std::string Question::getQuestion() {
+	return question;
+
+}
 
 std::string Question::getOptionA() {
 	return optionA;
@@ -36,6 +41,11 @@ std::string Question::getAnswer() {
 
 std::string Question::getTopic() {
 	return topic;
+}
+
+void Question::setQuestion(std::string question) {
+	this->question = question;
+
 }
 
 void Question::setOptionA(std::string optionA) {

@@ -1,6 +1,9 @@
 #include <string>
+#ifndef QUESTION_H
+#define QUESTION_H
 
 class Question {
+	std::string question;
 	std::string optionA;
 	std::string optionB;
 	std::string optionC;
@@ -10,8 +13,9 @@ class Question {
 	std::string answer;
 	std::string topic;
 public:
-	Question(std::string, std::string, std::string, std::string, std::string, int, std::string, std::string);
+	Question(std::string, std::string, std::string, std::string, std::string, std::string, int, std::string, std::string);
 	Question();
+	std::string getQuestion();
 	std::string getOptionA();
 	std::string getOptionB();
 	std::string getOptionC();
@@ -20,6 +24,7 @@ public:
 	int getDifficulty();
 	std::string getAnswer();
 	std::string getTopic();
+	void setQuestion(std::string);
 	void setOptionA(std::string);
 	void setOptionB(std::string);
 	void setOptionC(std::string);
@@ -29,3 +34,5 @@ public:
 	void setAnswer(std::string);
 	void setTopic(std::string);
 };
+
+#endif

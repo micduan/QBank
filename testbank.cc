@@ -35,7 +35,7 @@ testbank::testbank(std::string myPath) {
 		std::regex nextQuestion(any_number);
 		while (inFile >> test) {
 			if (regex_match(test, nextQuestion)) {
-				Question myQuestion(optionA, optionB, optionC, optionD, optionE, stoi(difficulty), answer, topic);
+				Question myQuestion(question, optionA, optionB, optionC, optionD, optionE, stoi(difficulty), answer, topic);
 				this->myQuestions.push_back(myQuestion);
 				break;
 			}
@@ -102,7 +102,7 @@ testbank::testbank(std::string myPath) {
 		}
 
 		if (inFile.eof()) {
-			Question myQuestion(optionA, optionB, optionC, optionD, optionE, stoi(difficulty), answer, topic);
+			Question myQuestion(question, optionA, optionB, optionC, optionD, optionE, stoi(difficulty), answer, topic);
 			this->myQuestions.push_back(myQuestion);
 			break;
 		}
